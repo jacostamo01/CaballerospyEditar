@@ -33,13 +33,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Modelo para actualización parcial (ajusta campos a tu esquema real)
+#Campos
 class CaballeroUpdate(BaseModel):
     nombre: Optional[str] = None
-    signo: Optional[str] = None
-    armadura: Optional[str] = None
-    rango: Optional[str] = None
+    constelacion: Optional[str] = None
     edad: Optional[int] = None
+    urlImagen: Optional[str] = None
+    altura: Optional[int] = None
 
 @app.get("/")
 def raiz():
