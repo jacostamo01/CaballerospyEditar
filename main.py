@@ -33,17 +33,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-#Campos
 class CaballeroUpdate(BaseModel):
     nombre: Optional[str] = None
     constelacion: Optional[str] = None
     edad: Optional[int] = None
     urlImagen: Optional[str] = None
-    altura: Optional[int] = None
+    altura: Optional[float] = None
+    class Config:
+        # Ignora cualquier campo extra que llegue en el body
+        extra = "ignore"
+
 
 @app.get("/")
 def raiz():
     return {"mensaje": "MS Edición Caballeros funcionando"}
+
 
 @app.put("/caballeros/{id}")
 def editar_caballero(id: str, datos: CaballeroUpdate):
